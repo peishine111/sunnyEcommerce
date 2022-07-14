@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <div class="navbar-nav">
         <router-link class="navbar-brand" to="/">Sunny</router-link>
@@ -11,7 +11,7 @@
   </nav>
   <div class="container-fluid">
     <div class="container">
-      <img class="img-fluid rounded mx-auto d-block mt-5" src="https://upload.cc/i1/2022/07/02/mtsYDH.png" alt="">
+      <img class="img-fluid rounded mx-auto d-block mt-5 banner1" src="https://upload.cc/i1/2022/07/02/mtsYDH.png" alt="">
       <div class="row" d-flex>
       <div class="col-md-3" v-for="item in productsPurification" :key="item.id">
       <div class="card h-100 my-3" style="width: 18rem;">
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="container">
-      <img class="img-fluid rounded mx-auto d-block mt-5" src="https://upload.cc/i1/2022/07/05/KBRNvh.png" alt="">
+      <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://upload.cc/i1/2022/07/05/KBRNvh.png" alt="">
       <div class="row" d-flex >
       <div class="col-md-3" v-for="item in productsEnergyHealing" :key="item.id">
       <div class="card h-100 my-3 text-center" style="width: 18rem;">
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="container">
-      <img class="img-fluid rounded mx-auto d-block mt-5" src="https://upload.cc/i1/2022/07/05/FTUa4m.png" alt="">
+      <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://upload.cc/i1/2022/07/05/FTUa4m.png" alt="">
       <div class="row" d-flex>
       <div class="col-md-3" v-for="item in productsMeditation" :key="item.id">
       <div class="card h-100 my-3" style="width: 18rem;">

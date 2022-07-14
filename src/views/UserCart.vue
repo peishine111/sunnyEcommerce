@@ -9,22 +9,16 @@
           <table class="table align-middle">
             <thead>
               <tr>
-                <th></th>
                 <th>品名</th>
                 <th style="width: 110px">數量</th>
-                <th>單價</th>
+                <th>單位</th>
+                <th class="text-end">單價</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
             <template v-if="cart.carts">
               <tr v-for="item in cart.carts" :key="item.id">
-                <td>
-                  <button type="button" class="btn btn-outline-danger btn-sm"
-                          :disabled="status.loadingItem === item.id"
-                          @click="removeCartItem(item.id)">
-                    <i class="bi bi-x"></i>
-                  </button>
-                </td>
                 <td>
                   {{ item.product.title }}
                   <div class="text-success" v-if="item.coupon">
@@ -32,24 +26,31 @@
                   </div>
                 </td>
                 <td>
-                  <div class="input-group input-group-sm">
+                  <div class="input-group input-group-sm d-flex flex-direction-row">
                     <input type="number" class="form-control"
                       min="1"
                       :disabled="item.id === status.loadingItem"
                       @change="updateCart(item)"
                       v-model.number="item.qty">
-                    <div class="input-group-text">/ {{ item.product.unit }}</div>
                   </div>
                 </td>
+                <td><div class="input-group">/ {{ item.product.unit }}</div></td>
                 <td class="text-end">
                   <small v-if="cart.final_total !== cart.total" class="text-success">折扣價：</small>
                   {{ $filters.currency(item.final_total) }}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-danger btn-sm"
+                          :disabled="status.loadingItem === item.id"
+                          @click="removeCartItem(item.id)">
+                    <i class="bi bi-trash"></i>
+                  </button>
                 </td>
               </tr>
             </template>
             </tbody>
             <tfoot>
-            <tr>
+           <tr>
               <td colspan="3" class="text-end">總計</td>
               <td class="text-end">{{ $filters.currency(cart.total) }}</td>
             </tr>
@@ -74,48 +75,59 @@
       <Form class="col-md-6" v-slot="{ errors }"
             @submit="createOrder">
         <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <Field id="email" name="email" type="email" class="form-control"
-                   :class="{ 'is-invalid': errors['email'] }"
-                   placeholder="請輸入 Email" rules="email|required"
-                   v-model="form.user.email"></Field>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput"
+            :class="{ 'is-invalid': errors['email'] }"  name="email"
+            placeholder="請輸入 Email" rules="email|required"
+            v-model="form.user.email">
+            <label for="floatingInput">Email address</label>
+          </div>
           <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">
-          <label for="name" class="form-label">收件人姓名</label>
-          <Field id="name" name="姓名" type="text" class="form-control"
-                   :class="{ 'is-invalid': errors['姓名'] }"
-                   placeholder="請輸入姓名" rules="required"
-                   v-model="form.user.name"></Field>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput"
+            :class="{ 'is-invalid': errors['姓名'] }" name="姓名"
+            placeholder="請輸入姓名" rules="required"
+            v-model="form.user.name">
+            <label for="floatingInput">姓名</label>
+          </div>
           <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">
-          <label for="tel" class="form-label">收件人電話</label>
-          <Field id="tel" name="電話" type="tel" class="form-control"
-                   :class="{ 'is-invalid': errors['電話'] }"
-                   placeholder="請輸入電話" rules="required"
-                   v-model="form.user.tel"></Field>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput"
+            :class="{ 'is-invalid': errors['電話'] }" name="電話"
+            placeholder="請輸入電話" rules="required"
+            v-model="form.user.tel">
+            <label for="floatingInput">電話</label>
+          </div>
           <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">
-          <label for="address" class="form-label">收件人地址</label>
-          <Field id="address" name="地址" type="text" class="form-control"
-                   :class="{ 'is-invalid': errors['地址'] }"
-                   placeholder="請輸入地址" rules="required"
-                   v-model="form.user.address"></Field>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput"
+            :class="{ 'is-invalid': errors['地址'] }" name="地址"
+            placeholder="請輸入地址" rules="required"
+            v-model="form.user.address">
+            <label for="floatingInput">收件人地址</label>
+          </div>
           <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">
-          <label for="message" class="form-label">留言</label>
-          <textarea name="" id="message" class="form-control" cols="30" rows="10"
-                    v-model="form.message"></textarea>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput"
+            placeholder="請輸入留言" rules="required"
+            v-model="form.message">
+            <label for="floatingInput">留言</label>
+          </div>
         </div>
         <div class="text-end">
-          <button class="btn btn-danger">送出訂單</button>
+          <button class="btn btn-primary">送出訂單</button>
         </div>
       </Form>
     </div>
@@ -182,6 +194,7 @@ export default {
       })
     },
     updateCart (item) {
+      console.log('updateCart', item)
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${item.id}`
       this.isLoading = true
       this.status.loadingItem = item.id

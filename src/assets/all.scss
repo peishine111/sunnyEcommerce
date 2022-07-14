@@ -8,3 +8,30 @@
 @import "~bootstrap/scss/mixins";
 
 @import "~bootstrap/scss/bootstrap";
+
+.banner1{
+    width: 100vw;
+    height: 100vh;
+}
+
+.banner2{
+    width: 100vw;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.btn-primary {
+    background-color: #dfa9f5;
+    border: solid 1px #dfa9f5;
+}
+.btn-primary:hover {
+    background-color: #8f0bc7;
+}
+
+.bg-light{
+    background-color: #fff !important;
+}

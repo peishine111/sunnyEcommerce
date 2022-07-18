@@ -76,46 +76,46 @@
             @submit="createOrder">
         <div class="mb-3">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput"
+            <Field type="email" class="form-control" id="floatingInputEmail"
             :class="{ 'is-invalid': errors['email'] }"  name="email"
             placeholder="請輸入 Email" rules="email|required"
-            v-model="form.user.email">
+            v-model="form.user.email"></Field>
             <label for="floatingInput">Email address</label>
+            <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
           </div>
-          <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput"
+            <Field type="email" class="form-control" id="floatingInputName"
             :class="{ 'is-invalid': errors['姓名'] }" name="姓名"
             placeholder="請輸入姓名" rules="required"
-            v-model="form.user.name">
+            v-model="form.user.name"></Field>
             <label for="floatingInput">姓名</label>
+            <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
           </div>
-          <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput"
+            <Field type="email" class="form-control" id="floatingInputPhone"
             :class="{ 'is-invalid': errors['電話'] }" name="電話"
             placeholder="請輸入電話" rules="required"
-            v-model="form.user.tel">
+            v-model="form.user.tel"></Field>
             <label for="floatingInput">電話</label>
+            <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
           </div>
-          <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput"
+            <Field type="email" class="form-control" id="floatingInputAddress"
             :class="{ 'is-invalid': errors['地址'] }" name="地址"
             placeholder="請輸入地址" rules="required"
-            v-model="form.user.address">
+            v-model="form.user.address"></Field>
             <label for="floatingInput">收件人地址</label>
+            <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
           </div>
-          <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
         </div>
 
         <div class="mb-3">

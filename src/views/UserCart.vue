@@ -1,10 +1,13 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="container">
-    <h1>周年慶折價券，輸入代碼: good 可得5折折扣!!</h1>
-    <div class="row mt-4">
+    <button type="button" class="getcoupon mx-5" @click="getCoupon">點我抽優惠券</button>
+    <h3 class="d-inline-block mx-5">優惠券代碼:</h3>
+    <h1 class="d-inline-block" v-text="this.coupon"></h1>
+    <div class="row">
+    <div class="row mt-4 col-md-6">
       <!-- 購物車列表 -->
-      <div class="col-md-12">
+      <div>
         <div class="sticky-top">
           <table class="table align-middle">
             <thead>
@@ -70,9 +73,12 @@
           </div>
         </div>
       </div>
+      <div class="text-success" v-if="cart.carts">
+                    您的購物車還是空的，請到首頁選購!
+                  </div>
     </div>
-    <div class="my-5 row justify-content-center">
-      <Form class="col-md-6" v-slot="{ errors }"
+    <div class="my-5 row justify-content-center col-md-6">
+      <Form class="col-md-12" v-slot="{ errors }"
             @submit="createOrder">
         <div class="mb-3">
           <div class="form-floating mb-3">
@@ -131,10 +137,12 @@
         </div>
       </Form>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -153,7 +161,8 @@ export default {
         message: ''
       },
       cart: {},
-      coupon_code: ''
+      coupon_code: '',
+      coupon: ''
     }
   },
   methods: {
@@ -240,6 +249,15 @@ export default {
           const orderId = res.data.orderId
           this.$router.push(`/user/checkout/${orderId}`)
         })
+    },
+    getCoupon () {
+      const num = Math.floor(Math.random() * 3)
+      console.log(num)
+      if (num === 0 || num === 1) {
+        this.coupon = '週年慶9折'
+      } else if (num === 2) {
+        this.coupon = '週年慶5折'
+      }
     }
   },
   created () {

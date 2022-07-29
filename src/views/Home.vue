@@ -4,8 +4,7 @@
       <div class="navbar-nav">
         <router-link class="navbar-brand" to="/">Sunny</router-link>
         <router-link class="nav-link" to="/user/cart">購物車</router-link>
-        <router-link class="nav-link" to="/user/author">認識Sunny</router-link>
-        <router-link class="nav-link" to="/login">後臺管理</router-link>
+        <router-link class="nav-link" to="/user/author">關於我們</router-link>
       </div>
     </div>
   </nav>
@@ -19,6 +18,10 @@
       <div class="card-body">
         <h5 class="card-title ">{{ item.title }}</h5>
         <p class="card-text">{{ item.description }}</p>
+        <button type="button" class="btn btn-secondary"
+                        @click="getProduct(item.id)">
+                  查看更多
+                </button>
         <a href="#" class="btn btn-primary"
           :disabled="this.status.loadingItem === item.id"
           @click="addCart(item.id)">加到購物車</a>
@@ -36,6 +39,10 @@
       <div class="card-body">
         <h5 class="card-title ">{{ item.title }}</h5>
         <p class="card-text"> {{ item.description }} </p>
+        <button type="button" class="btn btn-secondary"
+                        @click="getProduct(item.id)">
+                  查看更多
+                </button>
         <a href="#" class="btn btn-primary"
           :disabled="this.status.loadingItem === item.id"
           @click="addCart(item.id)">加到購物車</a>
@@ -53,6 +60,10 @@
       <div class="card-body">
         <h5 class="card-title ">{{ item.title }}</h5>
         <p class="card-text">{{ item.description }}</p>
+        <button type="button" class="btn btn-secondary"
+                        @click="getProduct(item.id)">
+                  查看更多
+                </button>
         <a href="#" class="btn btn-primary"
           :disabled="this.status.loadingItem === item.id"
           @click="addCart(item.id)">加到購物車</a>
@@ -61,6 +72,9 @@
       </div>
       </div>
     </div>
+  </div>
+  <div class="footer d-flex justify-content-center">
+    <a href="#" class="my-5 d-block text-decoration-none link-dark">©2022 Sunny Cheng. All Rights Reserved.</a>
   </div>
 </template>
 
@@ -90,6 +104,9 @@ export default {
         console.log('products:', this.productsPurification)
       })
     },
+    getProduct (id) {
+      this.$router.push(`/user/product/${id}`)
+    },
     addCart (id) {
       console.log(id)
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
@@ -101,7 +118,9 @@ export default {
       this.$http.post(url, { data: cart })
         .then((res) => {
           this.status.loadingItem = ''
+          this.$httpMessageState(res, '加入購物車')
           console.log(res)
+          this.$router.push('/user/cart')
           this.getCart()
         })
     }

@@ -8,13 +8,13 @@
       </ol>
     </nav>
     <div class="row justify-content-center">
-      <article class="col-8">
+      <article class="d-flex flex-column justify-content-center col-8 mb-3">
+        <img :src="product.imageUrl" alt="" class="img-fluid mb-3">
         <h2>{{ product.title }}</h2>
         <div>{{ product.content }}</div>
         <div>{{ product.description }}</div>
-        <img :src="product.imageUrl" alt="" class="img-fluid mb-3">
       </article>
-      <div class="col-4">
+      <div class="col-8">
         <div class="h5" v-if="!product.price">{{ product.origin_price }} 元</div>
         <del class="h6" v-if="product.price">原價 {{ product.origin_price }} 元</del>
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>

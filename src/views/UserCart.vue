@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <div class="text-success" v-if="cart.carts">
+      <div class="text-success" v-if="cart.total===0">
                     您的購物車還是空的，請到首頁選購!
                   </div>
     </div>
@@ -162,7 +162,8 @@ export default {
       },
       cart: {},
       coupon_code: '',
-      coupon: ''
+      coupon: '',
+      isClick: true
     }
   },
   methods: {
@@ -251,12 +252,15 @@ export default {
         })
     },
     getCoupon () {
-      const num = Math.floor(Math.random() * 3)
-      console.log(num)
-      if (num === 0 || num === 1) {
-        this.coupon = '週年慶9折'
-      } else if (num === 2) {
-        this.coupon = '週年慶5折'
+      if (this.isClick === true) {
+        this.isClick = false
+        const num = Math.floor(Math.random() * 3)
+        console.log(num)
+        if (num === 0 || num === 1) {
+          this.coupon = '週年慶9折'
+        } else if (num === 2) {
+          this.coupon = '週年慶5折'
+        }
       }
     }
   },

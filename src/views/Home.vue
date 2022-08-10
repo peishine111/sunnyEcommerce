@@ -83,11 +83,17 @@
 
 <script>
 // @ is an alias to /src
+import emitter from '@/methods/emitter'
 import ToastMessages from '@/components/ToastMessages.vue'
 
 export default {
   components: {
     ToastMessages
+  },
+  provide () {
+    return {
+      emitter
+    }
   },
   data () {
     return {
@@ -97,7 +103,8 @@ export default {
       productsEnergyHealing: {},
       status: {
         loadingItem: ''
-      }
+      },
+      isDelete: true
     }
   },
   name: 'Home',
@@ -122,19 +129,35 @@ export default {
         product_id: id,
         qty: 1
       }
+      this.isLoading = true
       this.$http.post(url, { data: cart })
         .then((res) => {
-          this.status.loadingItem = ''
+          this.isLoading = false
           this.$httpMessageState(res, '加入購物車')
+          this.status.loadingItem = ''
           console.log(res)
           this.$router.push('/user/cart')
-          this.getCart()
+          this.getProducts()
         })
+    },
+    deleteAllCart () {
+      if (this.isDelete) {
+        console.log('前', this.isDelete)
+        this.isDelete = false
+        console.log('後', this.isDelete)
+        const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`
+        this.isLoading = true
+        this.$http.delete(url).then((response) => {
+          console.log(response)
+          this.isLoading = false
+        })
+      }
     }
   },
   created () {
     console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH)
     this.getProducts()
+    this.deleteAllCart()
   }
 }
 </script>

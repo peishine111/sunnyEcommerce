@@ -76,7 +76,7 @@
   <div class="footer d-flex justify-content-center">
     <a href="#" class="my-5 d-block text-decoration-none link-dark">©2022 Sunny Cheng. All Rights Reserved.</a>
   </div>
-  <div class="container-fluid mt-3 position-relative">
+  <div class="container-fluid mt-3">
     <ToastMessages></ToastMessages>
   </div>
 </template>
@@ -103,8 +103,7 @@ export default {
       productsEnergyHealing: {},
       status: {
         loadingItem: ''
-      },
-      isDelete: true
+      }
     }
   },
   name: 'Home',
@@ -136,27 +135,24 @@ export default {
           this.$httpMessageState(res, '加入購物車')
           this.status.loadingItem = ''
           console.log(res)
-          this.$router.push('/user/cart')
+          // this.$router.push('/user/cart')
           this.getProducts()
         })
     },
     deleteAllCart () {
-      if (this.isDelete) {
-        console.log('前', this.isDelete)
-        this.isDelete = false
-        console.log('後', this.isDelete)
-        const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`
-        this.isLoading = true
-        this.$http.delete(url).then((response) => {
-          console.log(response)
-          this.isLoading = false
-        })
-      }
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`
+      this.isLoading = true
+      this.$http.delete(url).then((response) => {
+        console.log(response)
+        this.isLoading = false
+      })
     }
   },
   created () {
     console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH)
     this.getProducts()
+  },
+  unmounted () {
     this.deleteAllCart()
   }
 }

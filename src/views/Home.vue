@@ -76,7 +76,7 @@
   <div class="footer d-flex justify-content-center">
     <a href="#" class="my-5 d-block text-decoration-none link-dark">©2022 Sunny Cheng. All Rights Reserved.</a>
   </div>
-  <div class="container-fluid mt-3">
+  <div class="container-fluid mt-3 ">
     <ToastMessages></ToastMessages>
   </div>
 </template>

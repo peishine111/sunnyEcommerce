@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="navbar-nav">
         <router-link class="navbar-brand" to="/">Sunny</router-link>
-        <router-link class="nav-link" to="/user/cart">購物車</router-link>
+        <router-link class="nav-link" to="/user/cart"><i class="bi bi-cart-fill"></i>購物車</router-link>
         <router-link class="nav-link" to="/user/author">關於我們</router-link>
       </div>
     </div>

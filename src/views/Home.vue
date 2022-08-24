@@ -3,8 +3,9 @@
     <div class="container-fluid">
       <div class="navbar-nav">
         <router-link class="navbar-brand" to="/">Sunny</router-link>
-        <router-link class="nav-link" to="/user/cart">購物車</router-link>
+        <router-link class="nav-link" to="/user/cart"><i class="bi bi-cart-fill"><div class="cartTotal">{{ cartTotal }}</div></i>購物車</router-link>
         <router-link class="nav-link" to="/user/author">關於我們</router-link>
+
       </div>
     </div>
   </nav>
@@ -103,7 +104,8 @@ export default {
       productsEnergyHealing: {},
       status: {
         loadingItem: ''
-      }
+      },
+      cartTotal: ''
     }
   },
   name: 'Home',
@@ -138,22 +140,16 @@ export default {
           // this.$router.push('/user/cart')
           this.getProducts()
         })
-    },
-    deleteAllCart () {
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`
-      this.isLoading = true
-      this.$http.delete(url).then((response) => {
-        console.log(response)
-        this.isLoading = false
-      })
     }
   },
   created () {
     console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH)
     this.getProducts()
-  },
-  unmounted () {
-    this.deleteAllCart()
+    emitter.on('cartTotal', (data) => {
+      console.log('cartTotalSunny', data)
+      this.cartTotal = data
+      console.log('cartTotalSunny111', this.cartTotal)
+    })
   }
 }
 </script>

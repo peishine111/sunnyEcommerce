@@ -142,6 +142,7 @@
 </template>
 
 <script>
+import emitter from '@/methods/emitter'
 
 export default {
   data () {
@@ -201,6 +202,8 @@ export default {
         console.log(response)
         this.cart = response.data.data
         this.isLoading = false
+        console.log('cartTotal', this.cart.carts.length)
+        emitter.emit('cartTotal', this.cart.carts.length)
       })
     },
     updateCart (item) {
@@ -220,6 +223,7 @@ export default {
     },
     removeCartItem (id) {
       this.status.loadingItem = id
+      console.log(id)
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
       this.isLoading = true
       this.$http.delete(url).then((response) => {

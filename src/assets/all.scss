@@ -57,3 +57,16 @@
     background-color: #4cc3ed;
     border: solid 1px #4cc3ed;
 }
+
+.cartTotal {
+    border: solid 1px red;
+    border-radius: 100%;
+    background-color: red;
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    font-size: 8px;
+    top: -5px;
+    right: 5px;
+}

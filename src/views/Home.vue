@@ -105,7 +105,7 @@ export default {
       status: {
         loadingItem: ''
       },
-      cartTotal: ''
+      cartTotal: 0
     }
   },
   name: 'Home',
@@ -137,19 +137,22 @@ export default {
           this.$httpMessageState(res, '加入購物車')
           this.status.loadingItem = ''
           console.log(res)
-          // this.$router.push('/user/cart')
+          this.$router.push('/user/cart')
           this.getProducts()
         })
+    },
+    getCart () {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
+      this.$http.get(url).then((response) => {
+        console.log(response)
+        this.cartTotal = response.data.data.carts.length
+      })
     }
   },
   created () {
     console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH)
     this.getProducts()
-    emitter.on('cartTotal', (data) => {
-      console.log('cartTotalSunny', data)
-      this.cartTotal = data
-      console.log('cartTotalSunny111', this.cartTotal)
-    })
+    this.getCart()
   }
 }
 </script>

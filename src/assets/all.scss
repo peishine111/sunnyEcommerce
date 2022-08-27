@@ -59,9 +59,9 @@
 }
 
 .cartTotal {
-    border: solid 1px red;
+    border: solid 1px #e7bcde;
     border-radius: 100%;
-    background-color: red;
+    background-color: #e7bcde;
     position: relative;
     display: inline-block;
     width: 15px;
@@ -69,4 +69,11 @@
     font-size: 8px;
     top: -5px;
     right: 5px;
+    text-align: center;
+}
+
+.img-product{
+    width: 40%;
+    height: 20vw;
+    object-fit: cover;
 }

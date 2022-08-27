@@ -8,8 +8,8 @@
       </ol>
     </nav>
     <div class="row justify-content-center">
-      <article class="d-flex flex-column justify-content-center col-8 mb-3">
-        <img :src="product.imageUrl" alt="" class="img-fluid mb-3">
+      <article class="d-flex flex-column justify-content-center align-items-center col-8 mb-3">
+        <img :src="product.imageUrl" alt="" class="img-fluid mb-3 img-product">
         <h2>{{ product.title }}</h2>
         <div>{{ product.content }}</div>
         <div>{{ product.description }}</div>

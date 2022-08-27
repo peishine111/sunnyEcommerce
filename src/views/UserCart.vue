@@ -142,7 +142,6 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
 
 export default {
   data () {
@@ -164,7 +163,8 @@ export default {
       cart: {},
       coupon_code: '',
       coupon: '',
-      isClick: true
+      isClick: true,
+      cartTotal: 0
     }
   },
   methods: {
@@ -201,9 +201,8 @@ export default {
       this.$http.get(url).then((response) => {
         console.log(response)
         this.cart = response.data.data
+        this.cartTotal = response.data.data.carts.length
         this.isLoading = false
-        console.log('cartTotal', this.cart.carts.length)
-        emitter.emit('cartTotal', this.cart.carts.length)
       })
     },
     updateCart (item) {
@@ -231,6 +230,8 @@ export default {
         this.status.loadingItem = ''
         this.getCart()
         this.isLoading = false
+        this.$emit('emit-remove-cart-item')
+        console.log('emit1')
       })
     },
     addCouponCode () {

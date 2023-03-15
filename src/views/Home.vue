@@ -11,7 +11,7 @@
   </nav>
   <div class="container-fluid">
     <div class="container">
-      <img class="img-fluid rounded mx-auto d-block mt-5 banner1" src="https://upload.cc/i1/2022/07/02/mtsYDH.png" alt="">
+      <img class="img-fluid rounded mx-auto d-block mt-5 banner1" src="https://imgur.com/hJ8Xq0s.png" alt="">
       <div class="row" d-flex>
       <div class="col-md-3" v-for="item in productsPurification" :key="item.id">
       <div class="card h-100 my-3" style="width: 18rem;">
@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="container">
-      <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://upload.cc/i1/2022/07/05/KBRNvh.png" alt="">
+      <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://imgur.com/bmb8aaY.png" alt="">
       <div class="row" d-flex >
       <div class="col-md-3" v-for="item in productsEnergyHealing" :key="item.id">
       <div class="card h-100 my-3 text-center" style="width: 18rem;">
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="container">
-      <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://upload.cc/i1/2022/07/05/FTUa4m.png" alt="">
+      <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://imgur.com/kKFy5ns.png" alt="">
       <div class="row" d-flex>
       <div class="col-md-3" v-for="item in productsMeditation" :key="item.id">
       <div class="card h-100 my-3" style="width: 18rem;">

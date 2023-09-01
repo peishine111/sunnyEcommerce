@@ -14,7 +14,7 @@
       <img class="img-fluid rounded mx-auto d-block mt-5 banner1" src="https://imgur.com/hJ8Xq0s.png" alt="">
       <div class="row" d-flex>
       <div class="col-md-3" v-for="item in productsPurification" :key="item.id">
-      <div class="card h-100 my-3" style="width: 18rem;">
+      <div class="card h-100 my-3">
       <img :src="item.imageUrl" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title ">{{ item.title }}</h5>
@@ -35,7 +35,7 @@
       <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://imgur.com/bmb8aaY.png" alt="">
       <div class="row" d-flex >
       <div class="col-md-3" v-for="item in productsEnergyHealing" :key="item.id">
-      <div class="card h-100 my-3 text-center" style="width: 18rem;">
+      <div class="card h-100 my-3 text-center">
       <img :src="item.imageUrl" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title ">{{ item.title }}</h5>
@@ -56,7 +56,7 @@
       <img class="img-fluid rounded mx-auto d-block mt-5 banner2" src="https://imgur.com/kKFy5ns.png" alt="">
       <div class="row" d-flex>
       <div class="col-md-3" v-for="item in productsMeditation" :key="item.id">
-      <div class="card h-100 my-3" style="width: 18rem;">
+      <div class="card h-100 my-3">
       <img :src="item.imageUrl" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title ">{{ item.title }}</h5>
@@ -75,7 +75,7 @@
     </div>
   </div>
   <div class="footer d-flex justify-content-center">
-    <a href="#" class="my-5 d-block text-decoration-none link-dark">©2022 Sunny Cheng. All Rights Reserved.</a>
+    <a href="#" class="my-5 d-block text-decoration-none link-dark">©2023 Sunny Cheng. All Rights Reserved.</a>
   </div>
   <div class="container-fluid mt-3 ">
     <ToastMessages></ToastMessages>
